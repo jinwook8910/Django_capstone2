@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Service
+
+metadata:
+  name: jupyternb-svc
+
+spec:
+  selector:
+    app: jupyternb
+
+  ports:
+    - port: 8888
+      protocol: TCP
+
+  type: LoadBalancer

@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+
+metadata:
+  name: mainsitetest2-dp
+  labels:
+    app: mainsitetest2
+
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: mainsitetest2
+
+  template:
+    metadata:
+      name: mainsitetest2-pod
+      labels:
+        app: mainsitetest2
+
+    spec:
+      containers:
+      - name: mainsitetest2
+        image: gcr.io/voltaic-plating-325610/mainsitetest2:v1
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 8000

@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+
+metadata:
+  name: jupyternb-dp
+  labels:
+    app: jupyternb
+
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: jupyternb
+
+  template:
+    metadata:
+      name: jupyternb-pod
+      labels:
+        app: jupyternb
+
+    spec:
+      containers:
+      - name: jupyternb
+        image: gcr.io/voltaic-plating-325610/jupyternb:v1
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 8888
